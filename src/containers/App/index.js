@@ -1,34 +1,44 @@
 /* jshint esversion:6 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import UserList from '../../components/UserList.js';
-import NewUser from '../NewUser';
+import { loadCards } from '../../actions';
+import Board from '../Board';
+import CardForm from '../CardForm';
+import 'bulma/css/bulma.css';
 
 class App extends Component {
-  render() {
-    console.log('checking props..', this.props);
+  componentWillMount() {
+    this.props.loadCards(this.props.cards);
+  }
 
+  render() {
     return (
-      <div>
-        <h1>Hello World!</h1>
-        <UserList
-          users={this.props.users}
-        />
-        <NewUser />
+      <div className="container">
+        <Board />
+        <CardForm />
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  console.log('STATE', state);
   return {
-    users : state.users
+    cards : state.cards
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadCards: (cards) => {
+      dispatch(loadCards(cards))
+    }
   }
 }
 
 const ConnectedApp = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App);
 
 export default ConnectedApp;
