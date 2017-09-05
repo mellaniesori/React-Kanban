@@ -5,10 +5,10 @@ import './index.css';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './containers/App';
-import users from './reducers';
+import cards from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(users);
+const store = createStore(cards);
 
 ReactDOM.render(
   <Provider store={ store }>
