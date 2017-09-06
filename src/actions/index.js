@@ -1,38 +1,27 @@
 /*jshint esversion:6*/
+import * as types from '../constants';
 
-export const LOAD_CARDS = 'LOAD_CARDS';
-export const ADD_CARD = 'ADD_CARD';
-export const DELETE_CARD = 'DELETE_CARD';
-export const UPDATE_CARD = 'UPDATE_CARD';
+let nextCardId = 0;
 
-export const loadCards = (cards) => {
-  console.log('LOADING CARDS: ', cards);
+export const addCard = cards => {
   return {
-    type : LOAD_CARDS,
-    cards : cards
+    type: types.ADD_CARD,
+    id: nextCardId++,
+    status: "queue",
+    ...cards
   };
 };
 
-export const addCard = (cards) => {
-  console.log('ACTION adding new card: ', cards);
+export const deleteCard = id => {
   return {
-    type : ADD_CARD,
-    cards : cards
+    type: types.DELETE_CARD,
+    id
   };
 };
 
-export const deleteCard = (card) => {
-  console.log('ACTION deleting card: ', card);
+export const updateCard = id => {
   return {
-    type : DELETE_CARD,
-    card : card
-  };
-};
-
-export const updateCard = (card) => {
-  console.log('ACTION updating card: ', card);
-  return {
-    type : UPDATE_CARD,
-    card : card
+    type: types.UPDATE_CARD,
+    id
   };
 };
