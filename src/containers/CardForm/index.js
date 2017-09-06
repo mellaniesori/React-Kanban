@@ -4,34 +4,8 @@ import { connect } from 'react-redux';
 import { addCard } from '../../actions';
 
 class CardForm extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      key: '',
-      title: '',
-      description: '',
-      assignedTo: '',
-      priority: '',
-      status: '',
-      createdBy: ''
-    };
-  }
-
-  createCardObj(stateObj) {
-    return {
-      key: stateObj.key,
-      title : stateObj.title,
-      description : stateObj.description,
-      assignedTo: stateObj.assignedTo,
-      priority : stateObj.priority,
-      status : stateObj.status,
-      createdBy : stateObj.createdBy
-    };
-  }
 
   handleSubmit(evt) {
-    console.log('handleSubmit state : ', this.state);
     evt.preventDefault();
     this.props.addCard(this.state);
   }
@@ -49,19 +23,18 @@ class CardForm extends Component {
         onSubmit={ this.handleSubmit.bind(this) }
       >
         <p> Enter New Task: </p>
-
         <input
           type="text"
           name="title"
           placeholder="Task Title"
-          value={ this.props.cards.title }
+          value={ this.props.title }
           onChange={ this.handleChange.bind(this) }
         />
 
         <select
           className="priority-options"
           name="priority"
-          value={ this.state.priority }
+          value={ this.props.priority }
           onChange={ this.handleChange.bind(this) }
         >
           <option disabled value="Base">Choose Priority</option>
@@ -71,9 +44,10 @@ class CardForm extends Component {
         </select><br />
 
         <textarea
+          type="text"
           name="description"
           placeholder="Description"
-          value={ this.state.description }
+          value={ this.props.description }
           onChange={ this.handleChange.bind(this) }
         /><br />
 
@@ -81,7 +55,7 @@ class CardForm extends Component {
           type="text"
           name="assignedTo"
           placeholder="Assigned To"
-          value={ this.state.assignedTo }
+          value={ this.props.assignedTo }
           onChange={ this.handleChange.bind(this) }
         /><br />
 
@@ -89,7 +63,7 @@ class CardForm extends Component {
           type="text"
           name="createdBy"
           placeholder="Created By"
-          value={ this.state.createdBy }
+          value={ this.props.createdBy }
           onChange={ this.handleChange.bind(this) }
         /><br />
 
@@ -97,7 +71,7 @@ class CardForm extends Component {
           className="status-options"
           name="status"
           onChange={ this.handleChange.bind(this) }
-          value={ this.state.status }
+          value={ this.props.status }
         >
           <option disabled value="Base">Choose Status</option>
           <option value="Queue">Queue</option>
@@ -108,8 +82,7 @@ class CardForm extends Component {
 
         <br /><br />
 
-        <button
-          id='submit-input'>
+        <button id='submit-input'>
             Create Card
         </button>
       </form>
