@@ -1,36 +1,47 @@
 /*jshint esversion:6*/
-import { LOAD_CARDS, ADD_CARD, DELETE_CARD, UPDATE_CARD } from '../actions';
+import * as types from '../constants';
 
-const initialState = [];
-
-const cards = (state = initialState, action) => {
-  switch(action.type) {
-
-    case LOAD_CARDS:
+const cardReducer = (state = [], action) => {
+  console.log("hitting reducer", action);
+  switch (action.type) {
+    case types.ADD_CARD:
       return [
-      ...action.cards
+        ...state,
+        {
+          id: action.id,
+          title: action.title,
+          description: action.description,
+          priority: action.priority,
+          createdBy: action.createdBy,
+          assignedTo: action.assignedTo,
+          status: action.status
+        }
       ];
 
-    case ADD_CARD:
-      return [
-      ...state,
-      action.cards
-      ];
+    case types.DELETE_CARD:
+      let filter = state.filter(card => card.id !== parseInt(action.id));
+      return filter;
 
-    case DELETE_CARD:
-      return [...state.cards, action.card].filter(card => card.id !== action.id)
-      ;
+    case types.UPDATE_CARD:
+      return state.map(card => {
+        if (card.id !== action.id) {
+          console.log('updating : ', card);
+          return card;
+        }
 
-    case UPDATE_CARD:
-      return {
-        cards: [...state.cards, action.card].filter(card => card.id !== action.card.id).concat([action.card])
-      };
+        return {
+          id: action.id,
+          title: action.title,
+          priority: action.priority,
+          createdBy: action.createdBy,
+          assignedTo: action.assignedTo,
+          status: action.status
+        };
+      });
 
     default:
       return state;
-
-  }// switch ends
+  }
 };
 
-export default cards;
-
+export default cardReducer;
