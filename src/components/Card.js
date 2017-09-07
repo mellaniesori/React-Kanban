@@ -7,8 +7,6 @@ const Card = ({ cards, closeDescription }) =>
       Title: { cards.title }
     </h3>
     <p>
-      Description: { cards.description }
-    <br />
       Priority: { cards.priority }
     <br />
       Assigned To: { cards.assignedTo }
