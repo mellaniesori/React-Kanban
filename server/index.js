@@ -1,9 +1,12 @@
 /*jshint esversion:6*/
 const express = require('express');
 const app = express();
+const db = require('../models');
+const { Card } = db;
+
 const PORT = process.env.PORT || 3001;
 
-app.get('/api/test', (req, res)=> {
+app.get('/cards', (req, res)=> {
   res.json({
   "Queue": [
     {
@@ -62,6 +65,7 @@ app.get('/api/test', (req, res)=> {
 });
 });
 
-app.listen(PORT, ()=> {
-  console.log(`listening on ${PORT}`);
+const server = app.listen(PORT, () => {
+  db.sequelize.sync();
+  console.log(`Server funning on ${PORT}`);
 });
