@@ -7,7 +7,6 @@ export const addCard = cards => {
   return {
     type: types.ADD_CARD,
     id: nextCardId++,
-    status: "queue",
     ...cards
   };
 };
