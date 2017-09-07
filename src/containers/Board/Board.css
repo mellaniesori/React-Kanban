@@ -1,4 +1,16 @@
-.columns {
-  border-right: 1px solid grey;
-  height: 50rem;
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
 }
+
+.columns {
+  height: 50rem;
+  display: flex;
+  align-content: center;
+}
+
+/*.column {
+  display: flex;
+  align-content: center;
+}*/

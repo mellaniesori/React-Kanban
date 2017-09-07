@@ -3,6 +3,7 @@ import * as types from '../constants';
 
 const cardReducer = (state = [], action) => {
   console.log("hitting reducer", action);
+  console.log('STATE: ', state);
   switch (action.type) {
     case types.ADD_CARD:
       return [
@@ -10,7 +11,6 @@ const cardReducer = (state = [], action) => {
         {
           id: action.id,
           title: action.title,
-          description: action.description,
           priority: action.priority,
           createdBy: action.createdBy,
           assignedTo: action.assignedTo,
@@ -19,7 +19,7 @@ const cardReducer = (state = [], action) => {
       ];
 
     case types.DELETE_CARD:
-      let filter = state.filter(card => card.id !== parseInt(action.id));
+      let filter = state.filter(card => card.id !== parseInt(action.id, 10));
       return filter;
 
     case types.UPDATE_CARD:
@@ -31,7 +31,6 @@ const cardReducer = (state = [], action) => {
         {
           id : updateCard.id,
           title : updateCard.title,
-          description : updateCard.description,
           priority : updateCard.priority,
           status : updateCard.status,
           createdBy : updateCard.createdBy,

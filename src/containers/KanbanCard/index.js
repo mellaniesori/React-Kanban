@@ -12,7 +12,6 @@ class KanbanCard extends Component{
       editCard: false,
       id: this.props.id,
       title: this.props.title,
-      description: this.props.description,
       assignedTo: this.props.assignedTo,
       createdBy: this.props.createdBy,
       priority: this.props.priority,
@@ -43,7 +42,6 @@ class KanbanCard extends Component{
 
   handleEditInput(evt) {
     evt.preventDefault();
-    console.log('editing', this.state);
     this.props.updateCard(this.state);
   }
 
@@ -72,13 +70,29 @@ class KanbanCard extends Component{
     }
   }
 
+  handleDrag(evt) {
+    evt.preventDefault();
+    if (evt.clientX / window.innerWidth < 0.28) {
+      this.props.updateCard({id: this.state.id, status: 'Queue'});
+    } else if (evt.clientX / window.innerWidth < 0.61) {
+      this.props.updateCard({id: this.state.id, status: 'Progress'});
+    } else if (evt.clientX / window.innerWidth < 1) {
+      this.props.updateCard({id: this.state.id, status: 'Done'});
+    } else {
+      return;
+    }
+  }
+
   render() {
     if(this.state.editCard) {
       return (
         <form
           className="edit-card-form"
-          style={ this.setPriorityColor(this.props.priority) }
+          style={ this.setPriorityColor(this.state.priority) }
           >
+          <Card
+          cards={ this.state }
+        /><br />
           <input
             className="close-edit-form"
             type="button"
@@ -96,15 +110,6 @@ class KanbanCard extends Component{
             value={ this.state.title }
             onChange={ this.handleChange }
           />
-            <br />
-          <textarea
-            className="edit-description"
-            placeholder="Edit Description"
-            type="text"
-            name="description"
-            value={ this.state.description }
-            onChange={ this.handleChange }
-            />
             <br />
           <input
             className="edit-title"
@@ -127,12 +132,24 @@ class KanbanCard extends Component{
             type="text"
             name="priority"
             value={ this.state.priority }
-            onChange={ this.handleChange.bind(this) }>
+            onChange={ this.handleChange }>
+            <option disabled value="Base">Choose Priority</option>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
-            <option value="Urgent">Urgent</option>
           </select>
+          <select
+            className="edit-status"
+            type="text"
+            name="status"
+            value={ this.state.status }
+            onChange={ this.handleChange }>
+            <option disabled value="Base">Choose Status</option>
+            <option value="Queue">Queue</option>
+            <option value="Progress">Progress</option>
+            <option value="Done">Done</option>
+          </select>
+          <br />
           <input
             type="submit"
             value="Save Edit"
@@ -152,6 +169,8 @@ class KanbanCard extends Component{
         <div
           className="each-card"
           style={ this.setPriorityColor(this.state.priority) }
+          draggable="true"
+          onDragEnd={ this.handleDrag.bind(this) }
           >
             <Card
               cards={ this.state }

@@ -21,7 +21,10 @@ class CardForm extends Component {
         className="card-form"
         onSubmit={ this.handleSubmit.bind(this) }
       >
-        <p> Enter New Task: </p>
+        <p>
+          Enter New Task:
+        </p>
+        <br />
         <input
           type="text"
           name="title"
@@ -29,58 +32,56 @@ class CardForm extends Component {
           value={ this.props.title }
           onChange={ this.handleChange.bind(this) }
         />
-
-        <select
-          className="priority-options"
-          name="priority"
-          value={ this.props.priority }
-          onChange={ this.handleChange.bind(this) }
-        >
-          <option disabled value="Base">Choose Priority</option>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-        </select><br />
-
-        <textarea
-          type="text"
-          name="description"
-          placeholder="Description"
-          value={ this.props.description }
-          onChange={ this.handleChange.bind(this) }
-        /><br />
-
+        <br />
         <input
           type="text"
           name="assignedTo"
           placeholder="Assigned To"
           value={ this.props.assignedTo }
           onChange={ this.handleChange.bind(this) }
-        /><br />
-
+        />
+        <br />
         <input
           type="text"
           name="createdBy"
           placeholder="Created By"
           value={ this.props.createdBy }
           onChange={ this.handleChange.bind(this) }
-        /><br />
+        />
+        <br />
 
+        <p>
+          Priority:
+        </p>
+        <select
+          className="priority-options"
+          name="priority"
+          value={ this.props.priority }
+          onChange={ this.handleChange.bind(this) }
+        >
+          <option value="Base">Choose Priority</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <p>
+          Status:
+        </p>
         <select
           className="status-options"
           name="status"
           onChange={ this.handleChange.bind(this) }
           value={ this.props.status }
         >
-          <option disabled value="Base">Choose Status</option>
+          <option value="Base">Choose Status</option>
           <option value="Queue">Queue</option>
           <option value="Progress">Progress</option>
           <option value="Done">Done</option>
 
         </select>
-
-        <br /><br />
-
+        <br />
+        <br />
         <button id='submit-input'>
             Create Card
         </button>

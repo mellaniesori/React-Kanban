@@ -2,22 +2,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Column from '../../components/Column';
+import './Board.css';
 
 class Board extends Component {
   render() {
     const boardCards = this.props.cards;
     return (
-      <div className="column">
+      <div className="columns">
         <Column
-          cards={ boardCards.filter(card => card.status === 'Queue') }
+          cards={ boardCards }
           columnName="Queue"
         />
         <Column
-          cards={ boardCards.filter(card => card.status === 'Progress') }
+          cards={ boardCards }
           columnName="Progress"
         />
         <Column
-          cards={ boardCards.filter(card => card.status === 'Done') }
+          cards={ boardCards }
           columnName="Done"
         />
       </div>
