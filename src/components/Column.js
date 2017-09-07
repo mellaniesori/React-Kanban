@@ -5,21 +5,14 @@ import 'bulma/css/bulma.css';
 
 const Column = ({ cards, columnName }) => {
   return (
-    <div className="column">
+    <div>
       <h2 className="column-title">
         { columnName }
       </h2>
         {
-          cards
-          .map((card) => {
-            console.log('mapping', card)
-            return <KanbanCard
-            key={card.id} {...card}
-            />;
-
-          })
+          cards.map(card => <KanbanCard key={card.id} {...card} />)
         }
-  </div>
+    </div>
   )
 }
 
