@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { addCard } from '../../actions';
 
 class CardForm extends Component {
-
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.addCard(this.state);
