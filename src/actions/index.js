@@ -19,9 +19,9 @@ export const deleteCard = id => {
   };
 };
 
-export const updateCard = id => {
+export const updateCard = card => {
   return {
     type: types.UPDATE_CARD,
-    id
+    card
   };
 };
