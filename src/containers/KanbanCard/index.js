@@ -5,20 +5,23 @@ import { deleteCard, updateCard } from '../../actions';
 import Card from '../../components/Card';
 
 class KanbanCard extends Component{
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       editCard: false,
-      title: '',
-      description: '',
-      assignedTo: '',
-      createdBy: '',
-      priority: 'Base',
-      status: 'Base'
+      id: this.props.id,
+      title: this.props.title,
+      description: this.props.description,
+      assignedTo: this.props.assignedTo,
+      createdBy: this.props.createdBy,
+      priority: this.props.priority,
+      status: this.props.status
     };
 
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleEditButton = this.handleEditButton.bind(this);
   }
 
   handleChange(evt) {
@@ -39,11 +42,8 @@ class KanbanCard extends Component{
   }
 
   handleEditInput(evt) {
-    console.log('editing', this.props);
     evt.preventDefault();
-    this.setState({
-      editCard: false
-    });
+    console.log('editing', this.state);
     this.props.updateCard(this.state);
   }
 
@@ -67,13 +67,12 @@ class KanbanCard extends Component{
       default:
         return {
           'border':'2px solid #111111',
-          'backgroundColor':'#f2ffe6'
+          'backgroundColor':'#ffffff'
         };
     }
   }
 
   render() {
-    console.log('KANBAN STATE : ', this.state);
     if(this.state.editCard) {
       return (
         <form
@@ -83,7 +82,7 @@ class KanbanCard extends Component{
           <input
             className="close-edit-form"
             type="button"
-            onClick={ this.handleEditButton.bind(this) }
+            onClick={ this.handleEditButton }
             value="✖"
             />
           <h1>
@@ -94,8 +93,8 @@ class KanbanCard extends Component{
             placeholder="Edit Task"
             type="text"
             name="title"
-            value={ this.props.title }
-            onChange={ this.handleChange.bind(this) }
+            value={ this.state.title }
+            onChange={ this.handleChange }
           />
             <br />
           <textarea
@@ -103,8 +102,8 @@ class KanbanCard extends Component{
             placeholder="Edit Description"
             type="text"
             name="description"
-            value={ this.props.description }
-            onChange={ this.handleChange.bind(this) }
+            value={ this.state.description }
+            onChange={ this.handleChange }
             />
             <br />
           <input
@@ -112,22 +111,22 @@ class KanbanCard extends Component{
             placeholder="Assign To New Person"
             type="text"
             name="assignedTo"
-            value={ this.props.assignedTo }
-            onChange={ this.handleChange.bind(this) }
+            value={ this.state.assignedTo }
+            onChange={ this.handleChange }
           />
           <input
             className="edit-title"
             placeholder="Edited By"
             type="text"
             name="createdBy"
-            value={ this.props.createdBy }
-            onChange={ this.handleChange.bind(this) }
+            value={ this.state.createdBy }
+            onChange={ this.handleChange }
           />
           <select
             className="edit-priority"
             type="text"
             name="priority"
-            value={ this.props.priority }
+            value={ this.state.priority }
             onChange={ this.handleChange.bind(this) }>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
@@ -138,13 +137,13 @@ class KanbanCard extends Component{
             type="submit"
             value="Save Edit"
             onClick={ this.handleEditInput.bind(this) }
-            id={ this.props.id }
+            id={ this.state.id }
             />
           <input
             type="button"
             onClick={ this.handleDelete }
             value="Delete Card"
-            id={ this.props.id }
+            id={ this.state.id }
             />
         </form>
       )
@@ -152,12 +151,12 @@ class KanbanCard extends Component{
       return (
         <div
           className="each-card"
-          style={ this.setPriorityColor(this.props.priority) }
+          style={ this.setPriorityColor(this.state.priority) }
           >
             <Card
-              cards={ this.props }
+              cards={ this.state }
             />
-            <button onClick={ this.handleEditButton.bind(this) }>
+            <button onClick={ this.handleEditButton }>
                 Edit Task
             </button>
         </div>
@@ -167,17 +166,13 @@ class KanbanCard extends Component{
 
 };
 
-const mapStateToProps = (state) => ({
-  cards : state.cards
-})
-
 const mapDispatchToProps = (dispatch, ownProps) => ({
   deleteCard: id => dispatch(deleteCard(id)),
   updateCard: card => dispatch(updateCard(card))
 })
 
 const ConnectedKanbanCard = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(KanbanCard);
 
