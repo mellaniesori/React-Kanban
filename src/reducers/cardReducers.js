@@ -2,8 +2,6 @@
 import * as types from '../constants';
 
 const cardReducer = (state = [], action) => {
-  console.log("hitting reducer", action);
-  console.log('STATE: ', state);
   switch (action.type) {
     case types.LOAD_CARDS:
       return [

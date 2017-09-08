@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "bulma": "^0.5.1",
     "express": "^4.15.4",
@@ -12,6 +13,7 @@
     "pg-hstore": "^2.3.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-promise": "^1.2.1",
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.12",
     "redux": "^3.7.2",
@@ -23,5 +25,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://localhost:3001/"
 }
