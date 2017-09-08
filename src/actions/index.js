@@ -1,7 +1,16 @@
 /*jshint esversion:6*/
 import * as types from '../constants';
 
+// this file will handle the axios requests
+
 let nextCardId = 0;
+
+export const loadCards = cards => {
+  return {
+    type: types.LOAD_CARDS,
+    cards
+  };
+};
 
 export const addCard = cards => {
   return {
