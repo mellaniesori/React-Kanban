@@ -37,7 +37,7 @@ app.post('/cards', (req, res) => {
   });
 });
 
-app.delete('/:id', (req, res) => {
+app.delete('/cards/:id/edit', (req, res) => {
   Card.destroy({
     where: {
       id: req.params.id
@@ -46,6 +46,7 @@ app.delete('/:id', (req, res) => {
   .then(() => {
     Card.findAll()
       .then((cards) => {
+        console.log('DELETE SUCCESS!!');
         res.json(cards);
       });
   })
@@ -54,27 +55,18 @@ app.delete('/:id', (req, res) => {
   });
 });
 
-app.put('/:id', (req,res) => {
-  Card.update({
-    title: req.body.title,
-    priority: req.body.priority,
-    assignedTo: req.body.assignedTo,
-    createdBy: req.body.createdBy,
-    status: req.body.status
-  }, {
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(() => {
-    Card.findAll()
-      .then((cards) => {
-        res.json(cards);
-      })
-      .catch((err) => {
-        throw err;
-      });
-  });
+app.put('/cards/:id/edit', (req, res) => {
+  var cardId = parseInt(req.params.id);
+  Card.findById(cardId)
+    .then((card) => {
+      card.update(req.body)
+        .then(() => {
+          Card.findAll()
+            .then((cards) => {
+              res.json(cards);
+            });
+        });
+    });
 });
 
 const server = app.listen(PORT, () => {
