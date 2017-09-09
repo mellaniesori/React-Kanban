@@ -42,7 +42,7 @@ class KanbanCard extends Component{
 
   handleEditInput(evt) {
     evt.preventDefault();
-    this.props.updateCard(this.state);
+    this.props.updateCard(this.state.id, this.state);
   }
 
   setPriorityColor(priority) {
@@ -154,13 +154,13 @@ class KanbanCard extends Component{
             type="submit"
             value="Save Edit"
             onClick={ this.handleEditInput.bind(this) }
-            id={ this.state.id }
+            id={ parseInt(this.state.id, 10) }
             />
           <input
             type="button"
             onClick={ this.handleDelete }
             value="Delete Card"
-            id={ this.state.id }
+            id={ parseInt(this.state.id, 10) }
             />
         </form>
       )
@@ -187,7 +187,7 @@ class KanbanCard extends Component{
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   deleteCard: id => dispatch(deleteCard(id)),
-  updateCard: card => dispatch(updateCard(card))
+  updateCard: (id, card) => dispatch(updateCard(id, card))
 })
 
 const ConnectedKanbanCard = connect(
