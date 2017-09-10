@@ -1,0 +1,9 @@
+.header-bar {
+  background: grey;
+  color: #ffffff;
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr 7rem;
+  align-items: center;
+  padding: 5px;
+}

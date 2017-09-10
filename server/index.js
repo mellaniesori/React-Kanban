@@ -37,7 +37,7 @@ app.post('/cards', (req, res) => {
   });
 });
 
-app.delete('/cards/:id/edit', (req, res) => {
+app.delete('/:id', (req, res) => {
   Card.destroy({
     where: {
       id: req.params.id
@@ -55,7 +55,7 @@ app.delete('/cards/:id/edit', (req, res) => {
   });
 });
 
-app.put('/cards/:id/edit', (req, res) => {
+app.put('/:id', (req, res) => {
   var cardId = parseInt(req.params.id);
   Card.findById(cardId)
     .then((card) => {

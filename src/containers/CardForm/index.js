@@ -4,6 +4,15 @@ import { connect } from 'react-redux';
 import { addCard } from '../../actions';
 
 class CardForm extends Component {
+  constructor() {
+    super();
+
+    this.setState({
+      priority: 'Base',
+      status: 'Base'
+    });
+  }
+
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.addCard(this.state);
@@ -17,6 +26,8 @@ class CardForm extends Component {
 
   render() {
     return (
+      <div id="wrap">
+      <div className="modal">
       <form
         className="card-form"
         onSubmit={ this.handleSubmit.bind(this) }
@@ -59,10 +70,20 @@ class CardForm extends Component {
           value={ this.props.priority }
           onChange={ this.handleChange.bind(this) }
         >
-          <option value="Base">Choose Priority</option>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
+          <option value="Base">
+            Choose Priority
+          </option>
+          <option value="Low">
+            Low
+          </option>
+          <option value="Medium">
+            Medium
+          </option>
+          <option value="High">
+            High
+          </option>
+          <option value="Blocker">Blocker
+          </option>
         </select>
 
         <p>
@@ -82,10 +103,14 @@ class CardForm extends Component {
         </select>
         <br />
         <br />
-        <button id='submit-input'>
+        <button id="submit-input">
             Create Card
-        </button>
+        </button><br />
+
+        <a className="close-form" href="#">CLOSE</a>
       </form>
+      </div>
+      </div>
     )
   }
 }

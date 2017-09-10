@@ -1,11 +1,12 @@
 /* jshint esversion:6 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import 'bulma/css/bulma.css';
 import { loadCards } from '../../actions';
 import Board from '../Board';
 import CardForm from '../CardForm';
 import Header from '../../components/Header';
+// import 'bulma/css/bulma.css';
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -21,14 +22,13 @@ class App extends Component {
     };
   }
   componentWillMount() {
-    console.log('APP PROPS:', this.props.cards);
     this.props.loadCards();
   }
 
   render() {
     return (
-      <div className="container is-mobile">
-        <Header />
+      <div className="main-grid">
+        <Header/>
         <Board />
         <CardForm />
       </div>

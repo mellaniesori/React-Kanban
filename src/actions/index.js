@@ -20,7 +20,6 @@ export const addCard = cards => {
   return (dispatch) => {
     axios.post('/cards', querystring.stringify(cards))
       .then((cards) => {
-        console.log('add : ', cards);
         dispatch({
           type: types.LOAD_CARDS,
           cards: cards.data
@@ -32,9 +31,8 @@ export const addCard = cards => {
 export const deleteCard = id => {
   let deleteID = parseInt(id, 10);
   return (dispatch) => {
-    axios.delete(`/cards/${deleteID}/edit`)
+    axios.delete(`/${deleteID}`)
       .then((cards) => {
-        console.log('delete : ', cards);
         dispatch({
           type: types.LOAD_CARDS,
           cards: cards.data
@@ -43,10 +41,10 @@ export const deleteCard = id => {
   };
 };
 
-export const updateCard = (id, edited) => {
+export const updateCard = (id, updatedCard) => {
   let editId = parseInt(id, 10);
     return (dispatch) => {
-      axios.put(`/cards/${editId}/edit`, querystring.stringify(edited))
+      axios.put(`/${editId}`, querystring.stringify(updatedCard))
       .then((cards) => {
         dispatch({
           type: types.LOAD_CARDS,

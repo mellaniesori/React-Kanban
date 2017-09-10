@@ -8,7 +8,7 @@ class Board extends Component {
   render() {
     const boardCards = this.props.cards;
     return (
-      <div className="columns">
+      <div className="column-container">
         <Column
           cards={ boardCards }
           columnName="Queue"

@@ -1,16 +1,20 @@
 /*jshint esversion:6*/
 import React from "react";
+import '../containers/App/App.css';
 
 const Header = () => {
   return (
-    <nav className="header-bar">
+    <div className="header-bar">
       <p>
-        KANBAN BOARD
+        KANBAN
       </p>
-      <button>
-        NEW TASK
+      <button
+        className="open">
+          <a href="#wrap">
+            NEW TASK
+          </a>
       </button>
-  </nav>
+  </div>
   )
 }
 

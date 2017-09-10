@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteCard, updateCard } from '../../actions';
 import Card from '../../components/Card';
+import '../App/App.css';
 
 class KanbanCard extends Component{
   constructor(props) {
@@ -73,11 +74,11 @@ class KanbanCard extends Component{
   handleDrag(evt) {
     evt.preventDefault();
     if (evt.clientX / window.innerWidth < 0.28) {
-      this.props.updateCard({id: this.state.id, status: 'Queue'});
+      this.props.updateCard({id: this.state.id, status: 'Queue'}, this.state);
     } else if (evt.clientX / window.innerWidth < 0.61) {
-      this.props.updateCard({id: this.state.id, status: 'Progress'});
+      this.props.updateCard({id: this.state.id, status: 'Progress'}, this.state);
     } else if (evt.clientX / window.innerWidth < 1) {
-      this.props.updateCard({id: this.state.id, status: 'Done'});
+      this.props.updateCard({id: this.state.id, status: 'Done'}, this.state);
     } else {
       return;
     }
@@ -90,20 +91,17 @@ class KanbanCard extends Component{
           className="edit-card-form"
           style={ this.setPriorityColor(this.state.priority) }
           >
-          <Card
-          cards={ this.state }
-        /><br />
           <input
             className="close-edit-form"
             type="button"
             onClick={ this.handleEditButton }
             value="✖"
             />
-          <h1>
-            Edit
-          </h1>
+          <h3 className="edit-task-title">
+            Edit Task:
+          </h3>
           <input
-            className="edit-title"
+            className="edit-input"
             placeholder="Edit Task"
             type="text"
             name="title"
@@ -112,7 +110,7 @@ class KanbanCard extends Component{
           />
             <br />
           <input
-            className="edit-title"
+            className="edit-input"
             placeholder="Assign To New Person"
             type="text"
             name="assignedTo"
@@ -120,7 +118,7 @@ class KanbanCard extends Component{
             onChange={ this.handleChange }
           />
           <input
-            className="edit-title"
+            className="edit-input"
             placeholder="Edited By"
             type="text"
             name="createdBy"
@@ -128,40 +126,48 @@ class KanbanCard extends Component{
             onChange={ this.handleChange }
           />
           <select
-            className="edit-priority"
+            className="edit-input"
             type="text"
             name="priority"
             value={ this.state.priority }
             onChange={ this.handleChange }>
-            <option disabled value="Base">Choose Priority</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
+            <option value="Low">
+              Low
+            </option>
+            <option value="Medium">Medium
+            </option>
+            <option value="High">
+              High
+            </option>
+            <option value="Blocker">Blocker
+            </option>
           </select>
           <select
-            className="edit-status"
+            className="edit-input"
             type="text"
             name="status"
             value={ this.state.status }
             onChange={ this.handleChange }>
-            <option disabled value="Base">Choose Status</option>
             <option value="Queue">Queue</option>
             <option value="Progress">Progress</option>
             <option value="Done">Done</option>
           </select>
           <br />
           <input
+            className="save-button"
             type="submit"
             value="Save Edit"
             onClick={ this.handleEditInput.bind(this) }
             id={ parseInt(this.state.id, 10) }
             />
           <input
+            className="delete-button"
             type="button"
             onClick={ this.handleDelete }
             value="Delete Card"
             id={ parseInt(this.state.id, 10) }
-            />
+          />
+
         </form>
       )
     } else {
@@ -173,11 +179,10 @@ class KanbanCard extends Component{
           onDragEnd={ this.handleDrag.bind(this) }
           >
             <Card
-              cards={ this.state }
+              cards={ this.props }
+              handleEditButton={ this.handleEditButton }
             />
-            <button onClick={ this.handleEditButton }>
-                Edit Task
-            </button>
+
         </div>
       )
     }

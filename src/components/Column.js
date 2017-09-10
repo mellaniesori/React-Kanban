@@ -1,11 +1,10 @@
 /* jshint esversion:6 */
 import React from 'react';
 import KanbanCard from '../containers/KanbanCard';
-import '../containers/Board/Board.css';
 
 const Column = ({ cards, columnName }) => {
   return (
-    <div className="column">
+    <div className={ columnName }>
       <h2 className="column-title">
         { columnName }
       </h2>
