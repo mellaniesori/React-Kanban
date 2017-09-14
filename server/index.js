@@ -6,14 +6,11 @@ const { Card } = db;
 
 const PORT = process.env.PORT || 3001;
 
-// this file will handle DB
-
 app.use(bp.urlencoded());
 
 app.get('/cards', (req, res)=> {
   Card.findAll()
     .then((cards) => {
-      console.log(cards);
       res.json(cards);
     });
 });
@@ -46,7 +43,6 @@ app.delete('/:id', (req, res) => {
   .then(() => {
     Card.findAll()
       .then((cards) => {
-        console.log('DELETE SUCCESS!!');
         res.json(cards);
       });
   })
