@@ -67,20 +67,6 @@ class KanbanCard extends Component{
     }
   }
 
-  handleDrag(evt) {
-    evt.preventDefault();
-    console.log(evt);
-    if (evt.clientX / window.innerWidth < 0.28) {
-      this.props.updateCard(this.state.id, this.state);
-    } else if (evt.clientX / window.innerWidth < 0.61) {
-      this.props.updateCard(this.state.id, this.state);
-    } else if (evt.clientX / window.innerWidth < 1) {
-      this.props.updateCard(this.state.id, this.state);
-    } else {
-      return;
-    }
-  }
-
   render() {
     if(this.state.editCard) {
       return (
@@ -171,8 +157,6 @@ class KanbanCard extends Component{
         <div
           className="each-card"
           style={ this.setPriorityColor(this.state.priority) }
-          draggable="true"
-          onDragEnd={ this.handleDrag.bind(this) }
           >
             <Card
               cards={ this.props }
