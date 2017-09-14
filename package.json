@@ -6,7 +6,6 @@
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "browser-sync": "^2.18.13",
-    "bulma": "^0.5.1",
     "express": "^4.15.4",
     "express-sessions": "^1.0.6",
     "gulp": "^3.9.1",
@@ -22,7 +21,8 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "sass": "^1.0.0-beta.2",
-    "sequelize": "^4.8.0"
+    "sequelize": "^4.8.0",
+    "whatwg-fetch": "^2.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
