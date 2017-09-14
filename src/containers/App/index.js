@@ -5,7 +5,6 @@ import { loadCards } from '../../actions';
 import Board from '../Board';
 import CardForm from '../CardForm';
 import Header from '../../components/Header';
-// import 'bulma/css/bulma.css';
 import './App.css';
 
 class App extends Component {
