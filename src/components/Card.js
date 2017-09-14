@@ -18,7 +18,9 @@ const Card = ({ cards, handleEditButton }) =>
         onClick={ handleEditButton }>
         Edit Task
       </button>
-      { cards.assignedTo }
+      <p className="assigned-to">
+        { cards.assignedTo }
+      </p>
     </div>
   </div>;
 

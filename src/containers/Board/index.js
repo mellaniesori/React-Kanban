@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Column from '../../components/Column';
-import './Board.css';
 
 class Board extends Component {
   render() {

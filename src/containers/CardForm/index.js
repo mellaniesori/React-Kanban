@@ -24,6 +24,13 @@ class CardForm extends Component {
     });
   }
 
+  handleEditButton(evt) {
+    evt.preventDefault();
+    this.setState({
+      editCard: !this.state.editCard
+    });
+  }
+
   render() {
     return (
       <div id="wrap">
@@ -32,7 +39,15 @@ class CardForm extends Component {
         className="card-form"
         onSubmit={ this.handleSubmit.bind(this) }
       >
-        <p>
+      <a
+      className="close-form"
+      href="#">
+        <input
+          type="button"
+          value="✖"
+        />
+        </a>
+        <p className="new-task-title">
           Enter New Task:
         </p>
         <br />
@@ -43,7 +58,6 @@ class CardForm extends Component {
           value={ this.props.title }
           onChange={ this.handleChange.bind(this) }
         />
-        <br />
         <input
           type="text"
           name="assignedTo"
@@ -60,10 +74,6 @@ class CardForm extends Component {
           onChange={ this.handleChange.bind(this) }
         />
         <br />
-
-        <p>
-          Priority:
-        </p>
         <select
           className="priority-options"
           name="priority"
@@ -86,9 +96,6 @@ class CardForm extends Component {
           </option>
         </select>
 
-        <p>
-          Status:
-        </p>
         <select
           className="status-options"
           name="status"
@@ -103,11 +110,10 @@ class CardForm extends Component {
         </select>
         <br />
         <br />
-        <button id="submit-input">
-            Create Card
-        </button><br />
 
-        <a className="close-form" href="#">CLOSE</a>
+        <button id="submit-card">
+            Create Card
+        </button>
       </form>
       </div>
       </div>

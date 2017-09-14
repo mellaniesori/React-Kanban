@@ -50,35 +50,32 @@ class KanbanCard extends Component{
     switch (priority) {
       case 'High' :
         return {
-          'border':'2px solid #B71C1C',
-          'backgroundColor':'#F06292'
+          'backgroundColor':'#F56E70'
         };
       case 'Medium' :
         return {
-          'border':'2px solid #00695C',
-          'backgroundColor':'#B2DFDB'
+          'backgroundColor':'#66AB8C'
         };
       case 'Low' :
         return {
-          'border':'2px solid #039BE5',
-          'backgroundColor':'#E1F5FE'
+          'backgroundColor':'#F7E8A4'
         };
       default:
         return {
-          'border':'2px solid #111111',
-          'backgroundColor':'#ffffff'
+          'backgroundColor':'#cccccc'
         };
     }
   }
 
   handleDrag(evt) {
     evt.preventDefault();
+    console.log(evt);
     if (evt.clientX / window.innerWidth < 0.28) {
-      this.props.updateCard({id: this.state.id, status: 'Queue'}, this.state);
+      this.props.updateCard(this.state.id, this.state);
     } else if (evt.clientX / window.innerWidth < 0.61) {
-      this.props.updateCard({id: this.state.id, status: 'Progress'}, this.state);
+      this.props.updateCard(this.state.id, this.state);
     } else if (evt.clientX / window.innerWidth < 1) {
-      this.props.updateCard({id: this.state.id, status: 'Done'}, this.state);
+      this.props.updateCard(this.state.id, this.state);
     } else {
       return;
     }
@@ -108,7 +105,6 @@ class KanbanCard extends Component{
             value={ this.state.title }
             onChange={ this.handleChange }
           />
-            <br />
           <input
             className="edit-input"
             placeholder="Assign To New Person"

@@ -1,9 +1,19 @@
 .header-bar {
-  background: grey;
-  color: #ffffff;
+  background: #24315E;
+  color: #A9D1E6;
   grid-area: header;
   display: grid;
   grid-template-columns: 1fr 7rem;
   align-items: center;
   padding: 5px;
+}
+
+.header-bar button {
+  background-color: #24315E;
+  border: 1px solid #A9D1E6;
+  color: #A9D1E6;
+  padding: 7px;
+  font-family: Montserrat;
+  letter-spacing: 1px;
+  font-size: 1rem;
 }

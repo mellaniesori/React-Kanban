@@ -18,8 +18,18 @@
 }
 
 .edit-task-title {
+  font-size: 0.8rem;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0px;
+  font-weight: 300;
+}
+
+.edit-input {
+  align-content: center;
+  font-size: 1rem;
+  margin: 5px;
+  background: none;
+  text-align: left;
 }

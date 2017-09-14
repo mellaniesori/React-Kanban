@@ -8,12 +8,12 @@ const Header = () => {
       <p>
         KANBAN
       </p>
+      <a href="#wrap">
       <button
         className="open">
-          <a href="#wrap">
-            NEW TASK
-          </a>
+          NEW TASK
       </button>
+      </a>
   </div>
   )
 }

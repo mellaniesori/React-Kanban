@@ -1,9 +1,9 @@
 @media only screen and (min-width: 600px) {
 
 .column-container {
-  background: #ffffff;
   grid-area: main;
-  padding: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
 
   display: grid;
 
@@ -13,6 +13,7 @@
 
   grid-template-areas: "title title title";
 
+  background-color: #A9D1E6;
 }
 
 .column-title {
@@ -20,18 +21,28 @@
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
+  color: #000000;
+  padding-top: 1rem;
 }
 
 .Queue {
   grid-area: title title title;
+  border-right: 2px solid #24315E;
+  padding-right: 15px;
 }
 
 .Progress {
   grid-area: title title title;
+  border-right: 2px solid #24315E;
+  padding-right: 15px;
+  min-height: 36rem;
 }
 
 .Done {
   grid-area: article article article;
 }
+}
 
+.column-details {
+  font-family: Ovo;
 }
