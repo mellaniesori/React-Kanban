@@ -1,21 +1,15 @@
-/*jshint esversion:6*/
-import React from "react";
+import React from 'react';
 import '../containers/App/App.css';
 
 const Header = () => {
   return (
     <div className="header-bar">
-      <p>
-        KANBAN
-      </p>
+      <p>KANBAN</p>
       <a href="#wrap">
-      <button
-        className="open">
-          NEW TASK
-      </button>
+        <button className="open">NEW TASK</button>
       </a>
-  </div>
-  )
-}
+    </div>
+  );
+};
 
 export default Header;

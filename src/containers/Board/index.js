@@ -8,29 +8,18 @@ class Board extends Component {
     const boardCards = this.props.cards;
     return (
       <div className="column-container">
-        <Column
-          cards={ boardCards }
-          columnName="Queue"
-        />
-        <Column
-          cards={ boardCards }
-          columnName="Progress"
-        />
-        <Column
-          cards={ boardCards }
-          columnName="Done"
-        />
+        <Column cards={boardCards} columnName="Queue" />
+        <Column cards={boardCards} columnName="Progress" />
+        <Column cards={boardCards} columnName="Done" />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  cards : state.cards
-})
+const mapStateToProps = state => ({
+  cards: state.cards
+});
 
-const ConnectedBoardApp = connect(
-  mapStateToProps
-)(Board);
+const ConnectedBoardApp = connect(mapStateToProps)(Board);
 
 export default ConnectedBoardApp;

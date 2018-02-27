@@ -1,11 +1,10 @@
-/*jshint esversion:6*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteCard, updateCard } from '../../actions';
 import Card from '../../components/Card';
 import '../App/App.css';
 
-class KanbanCard extends Component{
+class KanbanCard extends Component {
   constructor(props) {
     super(props);
 
@@ -48,88 +47,82 @@ class KanbanCard extends Component{
 
   setPriorityColor(priority) {
     switch (priority) {
-      case 'High' :
+      case 'High':
         return {
-          'backgroundColor':'#F56E70'
+          backgroundColor: '#F56E70'
         };
-      case 'Medium' :
+      case 'Medium':
         return {
-          'backgroundColor':'#66AB8C'
+          backgroundColor: '#66AB8C'
         };
-      case 'Low' :
+      case 'Low':
         return {
-          'backgroundColor':'#F7E8A4'
+          backgroundColor: '#F7E8A4'
         };
       default:
         return {
-          'backgroundColor':'#cccccc'
+          backgroundColor: '#cccccc'
         };
     }
   }
 
   render() {
-    if(this.state.editCard) {
+    if (this.state.editCard) {
       return (
         <form
           className="edit-card-form"
-          style={ this.setPriorityColor(this.state.priority) }
-          >
+          style={this.setPriorityColor(this.state.priority)}
+        >
           <input
             className="close-edit-form"
             type="button"
-            onClick={ this.handleEditButton }
+            onClick={this.handleEditButton}
             value="✖"
-            />
-          <h3 className="edit-task-title">
-            Edit Task:
-          </h3>
+          />
+          <h3 className="edit-task-title">Edit Task:</h3>
           <input
             className="edit-input"
             placeholder="Edit Task"
             type="text"
             name="title"
-            value={ this.state.title }
-            onChange={ this.handleChange }
+            value={this.state.title}
+            onChange={this.handleChange}
           />
           <input
             className="edit-input"
             placeholder="Assign To New Person"
             type="text"
             name="assignedTo"
-            value={ this.state.assignedTo }
-            onChange={ this.handleChange }
+            value={this.state.assignedTo}
+            onChange={this.handleChange}
           />
           <input
             className="edit-input"
             placeholder="Edited By"
             type="text"
             name="createdBy"
-            value={ this.state.createdBy }
-            onChange={ this.handleChange }
+            value={this.state.createdBy}
+            onChange={this.handleChange}
           />
           <select
             className="edit-input"
             type="text"
             name="priority"
-            value={ this.state.priority }
-            onChange={ this.handleChange }>
-            <option value="Low">
-              Low
-            </option>
-            <option value="Medium">Medium
-            </option>
-            <option value="High">
-              High
-            </option>
-            <option value="Blocker">Blocker
-            </option>
+            value={this.state.priority}
+            onChange={this.handleChange}
+          >
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Blocker">Blocker</option>
           </select>
           <select
             className="edit-input"
             type="text"
             name="status"
-            value={ this.state.status }
-            onChange={ this.handleChange }>
+            value={this.state.status}
+            onChange={this.handleChange}
+          >
             <option value="Queue">Queue</option>
             <option value="Progress">Progress</option>
             <option value="Done">Done</option>
@@ -139,45 +132,36 @@ class KanbanCard extends Component{
             className="save-button"
             type="submit"
             value="Save Edit"
-            onClick={ this.handleEditInput.bind(this) }
-            id={ parseInt(this.state.id, 10) }
-            />
+            onClick={this.handleEditInput.bind(this)}
+            id={parseInt(this.state.id, 10)}
+          />
           <input
             className="delete-button"
             type="button"
-            onClick={ this.handleDelete }
+            onClick={this.handleDelete}
             value="Delete Card"
-            id={ parseInt(this.state.id, 10) }
+            id={parseInt(this.state.id, 10)}
           />
-
         </form>
-      )
+      );
     } else {
       return (
         <div
           className="each-card"
-          style={ this.setPriorityColor(this.state.priority) }
-          >
-            <Card
-              cards={ this.props }
-              handleEditButton={ this.handleEditButton }
-            />
-
+          style={this.setPriorityColor(this.state.priority)}
+        >
+          <Card cards={this.props} handleEditButton={this.handleEditButton} />
         </div>
-      )
+      );
     }
   }
-
-};
+}
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   deleteCard: id => dispatch(deleteCard(id)),
   updateCard: (id, card) => dispatch(updateCard(id, card))
-})
+});
 
-const ConnectedKanbanCard = connect(
-  null,
-  mapDispatchToProps
-)(KanbanCard);
+const ConnectedKanbanCard = connect(null, mapDispatchToProps)(KanbanCard);
 
 export default ConnectedKanbanCard;

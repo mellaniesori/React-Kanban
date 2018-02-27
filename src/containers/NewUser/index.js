@@ -28,30 +28,25 @@ class NewUser extends Component {
   render() {
     return (
       <div>
-      <input
-        type="text"
-        placeholder="new name"
-        onChange={this.handleNewUserInput.bind(this)}
-      />
-      <button onClick={this.submitUser.bind(this)}>Submit</button>
+        <input
+          type="text"
+          placeholder="new name"
+          onChange={this.handleNewUserInput.bind(this)}
+        />
+        <button onClick={this.submitUser.bind(this)}>Submit</button>
       </div>
-    )
+    );
   }
-
 }
 
-
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    addUser: (user) => {
+    addUser: user => {
       dispatch(addUser(user));
     }
   };
 };
 
-const ConnectedNewUser = connect(
-  null,
-  mapDispatchToProps
-)(NewUser);
+const ConnectedNewUser = connect(null, mapDispatchToProps)(NewUser);
 
 export default ConnectedNewUser;

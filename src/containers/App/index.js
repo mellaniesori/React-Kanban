@@ -1,4 +1,3 @@
-/* jshint esversion:6 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadCards } from '../../actions';
@@ -27,25 +26,22 @@ class App extends Component {
   render() {
     return (
       <div className="main-grid">
-        <Header/>
+        <Header />
         <Board />
         <CardForm />
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   cards: state.cards
-})
+});
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   loadCards: () => dispatch(loadCards())
-})
+});
 
-const ConnectedApp = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default ConnectedApp;

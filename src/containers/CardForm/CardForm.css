@@ -1,8 +1,9 @@
 .card-form {
-  background-color: #A9D1E6;
-
+  background-color: #a9d1e6;
 }
-.card-form input, select {
+
+.card-form input,
+select {
   font-family: Montserrat;
   font-size: 1rem;
   padding: 0;
@@ -10,8 +11,8 @@
 }
 
 .card-form button {
-  background-color: #24315E;
-  color: #A9D1E6;
+  background-color: #24315e;
+  color: #a9d1e6;
   font-family: Montserrat;
   font-size: 2rem;
   font-weight: 500;
@@ -49,7 +50,6 @@
   flex-direction: column;
   justify-content: center;
 }
-
 
 #wrap:not(:target) {
   opacity: 0;

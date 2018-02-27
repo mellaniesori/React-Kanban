@@ -3,43 +3,35 @@
 @import '../../stylesheets/components/_all.css';
 @import '../CardForm/CardForm.css';
 @import '../KanbanCard/KanbanCard.css';
-
 body {
   font-family: Montserrat;
   font-weight: 400;
   font-size: 1rem;
-  background-color: #A9D1E6;
+  background-color: white;
   margin: 0;
   padding: 0;
 }
 
 @media only screen and (min-width: 500px) {
-
   .main-grid {
-  display: grid;
-  width: 100%;
-
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-/*  grid-gap: 1rem;*/
-
-  grid-template-areas: "header"
-                       "main"
-                       "footer";
-}
-
-.main-grid div {
-  font-family: Montserrat;
-  font-weight: 300;
-  font-size: 1rem;
-}
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    /*  grid-gap: 1rem;*/
+    grid-template-areas: 'header' 'main' 'footer';
+  }
+  .main-grid div {
+    font-family: Montserrat;
+    font-weight: 300;
+    font-size: 1rem;
+  }
 }
 
 .column-title {
   margin: 0px;
   font-weight: 500;
   line-height: 1.5rem;
-
 }
 
 .column-details {
@@ -47,7 +39,8 @@ body {
   line-height: 1.5rem;
 }
 
-input, select {
+input,
+select {
   width: 93%;
   height: 2rem;
   margin: 1rem;
@@ -63,7 +56,8 @@ input, select {
   text-align: center;
 }
 
-.save-button, .delete-button {
+.save-button,
+.delete-button {
   background-color: white;
   font-family: Montserrat;
   text-transform: uppercase;
