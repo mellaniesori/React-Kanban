@@ -1,18 +1,18 @@
 .card-form {
-  background-color: #a9d1e6;
+  background-color: #fff;
 }
 
 .card-form input,
 select {
   font-family: Montserrat;
   font-size: 1rem;
-  padding: 0;
+  padding: 5px;
   margin: 5px;
 }
 
 .card-form button {
   background-color: #24315e;
-  color: #a9d1e6;
+  color: #fff;
   font-family: Montserrat;
   font-size: 2rem;
   font-weight: 500;
@@ -69,6 +69,6 @@ select {
 
 .close-form input {
   border: 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: left;
 }

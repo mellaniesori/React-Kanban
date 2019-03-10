@@ -8,8 +8,8 @@
     grid-template-rows: auto;
     grid-gap: 1rem;
     grid-template-areas: 'title title title';
-    background-color: white;
   }
+
   .column-title {
     text-align: center;
     margin-bottom: 10px;
@@ -18,14 +18,17 @@
     color: #000000;
     padding-top: 1rem;
   }
+
   .Queue {
     grid-area: title title title;
     padding-right: 15px;
   }
+
   .Progress {
     grid-area: title title title;
     padding-right: 15px;
   }
+
   .Done {
     grid-area: article article article;
   }

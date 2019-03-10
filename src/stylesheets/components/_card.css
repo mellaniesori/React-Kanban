@@ -1,13 +1,12 @@
 .card-component {
   padding: 8px;
   width: 100%;
+  background: #fff;
 }
 
 .each-card {
   padding: 0px;
   margin-top: 10px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px #dddddd;
 }
 
 .card-title {

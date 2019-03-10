@@ -42,6 +42,9 @@ const mapDispatchToProps = dispatch => ({
   loadCards: () => dispatch(loadCards())
 });
 
-const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
+const ConnectedApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 
 export default ConnectedApp;

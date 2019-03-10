@@ -6,10 +6,13 @@ class CardForm extends Component {
   constructor() {
     super();
 
-    this.setState({
+    this.state = {
       priority: 'Base',
       status: 'Base'
-    });
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit(evt) {
@@ -23,20 +26,13 @@ class CardForm extends Component {
     });
   }
 
-  handleEditButton(evt) {
-    evt.preventDefault();
-    this.setState({
-      editCard: !this.state.editCard
-    });
-  }
-
   render() {
     return (
       <div id="wrap">
         <div className="modal">
-          <form className="card-form" onSubmit={this.handleSubmit.bind(this)}>
-            <a className="close-form" href="#">
-              <input type="button" value="✖" />
+          <form className="card-form" onSubmit={this.handleSubmit}>
+            <a className="close-form" href="/">
+              <input type="button" value="✖" className="close-btn" />
             </a>
             <p className="new-task-title">Enter New Task:</p>
             <br />
@@ -45,14 +41,14 @@ class CardForm extends Component {
               name="title"
               placeholder="Task Title"
               value={this.props.title}
-              onChange={this.handleChange.bind(this)}
+              onChange={this.handleChange}
             />
             <input
               type="text"
               name="assignedTo"
               placeholder="Assigned To"
               value={this.props.assignedTo}
-              onChange={this.handleChange.bind(this)}
+              onChange={this.handleChange}
             />
             <br />
             <input
@@ -60,15 +56,14 @@ class CardForm extends Component {
               name="createdBy"
               placeholder="Created By"
               value={this.props.createdBy}
-              onChange={this.handleChange.bind(this)}
+              onChange={this.handleChange}
             />
             <br />
             <select
               className="priority-options"
               name="priority"
               value={this.props.priority}
-              onChange={this.handleChange.bind(this)}
-            >
+              onChange={this.handleChange}>
               <option value="Base">Choose Priority</option>
               <option value="Low">Low</option>
               <option value="Medium">Medium</option>
@@ -79,9 +74,8 @@ class CardForm extends Component {
             <select
               className="status-options"
               name="status"
-              onChange={this.handleChange.bind(this)}
-              value={this.props.status}
-            >
+              onChange={this.handleChange}
+              value={this.props.status}>
               <option value="Base">Choose Status</option>
               <option value="Queue">Queue</option>
               <option value="Progress">Progress</option>
@@ -106,8 +100,9 @@ const mapDispatchToProps = dispatch => ({
   addCard: card => dispatch(addCard(card))
 });
 
-const ConnectedCardForm = connect(mapStateToProps, mapDispatchToProps)(
-  CardForm
-);
+const ConnectedCardForm = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CardForm);
 
 export default ConnectedCardForm;

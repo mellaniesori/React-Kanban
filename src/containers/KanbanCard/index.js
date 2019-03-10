@@ -49,19 +49,23 @@ class KanbanCard extends Component {
     switch (priority) {
       case 'High':
         return {
-          backgroundColor: '#F56E70'
+          border: '#56001B solid 1px',
+          borderTop: '#56001B solid 15px'
         };
       case 'Medium':
         return {
-          backgroundColor: '#66AB8C'
+          border: '#2E9295 solid 1px',
+          borderTop: '#2E9295 solid 15px'
         };
       case 'Low':
         return {
-          backgroundColor: '#F7E8A4'
+          border: '#ECB000 solid 1px',
+          borderTop: '#ECB000 solid 15px'
         };
       default:
         return {
-          backgroundColor: '#cccccc'
+          border: '#A80028 solid 1px',
+          borderTop: '#A80028 solid 15px'
         };
     }
   }
@@ -71,8 +75,7 @@ class KanbanCard extends Component {
       return (
         <form
           className="edit-card-form"
-          style={this.setPriorityColor(this.state.priority)}
-        >
+          style={this.setPriorityColor(this.state.priority)}>
           <input
             className="close-edit-form"
             type="button"
@@ -109,8 +112,7 @@ class KanbanCard extends Component {
             type="text"
             name="priority"
             value={this.state.priority}
-            onChange={this.handleChange}
-          >
+            onChange={this.handleChange}>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
@@ -121,8 +123,7 @@ class KanbanCard extends Component {
             type="text"
             name="status"
             value={this.state.status}
-            onChange={this.handleChange}
-          >
+            onChange={this.handleChange}>
             <option value="Queue">Queue</option>
             <option value="Progress">Progress</option>
             <option value="Done">Done</option>
@@ -148,8 +149,7 @@ class KanbanCard extends Component {
       return (
         <div
           className="each-card"
-          style={this.setPriorityColor(this.state.priority)}
-        >
+          style={this.setPriorityColor(this.state.priority)}>
           <Card cards={this.props} handleEditButton={this.handleEditButton} />
         </div>
       );
@@ -162,6 +162,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   updateCard: (id, card) => dispatch(updateCard(id, card))
 });
 
-const ConnectedKanbanCard = connect(null, mapDispatchToProps)(KanbanCard);
+const ConnectedKanbanCard = connect(
+  null,
+  mapDispatchToProps
+)(KanbanCard);
 
 export default ConnectedKanbanCard;
